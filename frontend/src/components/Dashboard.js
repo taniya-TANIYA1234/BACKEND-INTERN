@@ -14,8 +14,8 @@ function Dashboard() {
   const fetchTasks = useCallback(async () => {
     try {
       const url = userId
-        ? `http://localhost:5000/api/tasks?userId=${userId}`
-        : "http://localhost:5000/api/tasks";
+        ? `/api/tasks?userId=${userId}`
+        : "/api/tasks";
 
       const res = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -36,7 +36,7 @@ function Dashboard() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        "/api/tasks",
         { title },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -56,7 +56,7 @@ function Dashboard() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${id}`,
+        `/api/tasks/${id}`,
         { title: newTitle },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -72,7 +72,7 @@ function Dashboard() {
   const deleteTask = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/tasks/${id}`,
+        `/api/tasks/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
