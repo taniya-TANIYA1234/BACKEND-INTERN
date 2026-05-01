@@ -7,11 +7,14 @@ const task = require('./routes/task');
 const admin =require("./routes/admin");
 const User = require('./models/User.js');
 const cors = require('cors');
+const path = require('path');  
 
 app.use(cors());
 
 
 dotenv.config();
+
+
 
 app.use(express.json());
 app.use('/api/auth', auth);
@@ -29,17 +32,19 @@ main().then(()=>{
 });
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/task-manager');
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
+app.use(express.static(path.join(__dirname, "../client/build")));
 
-
-app.use("/",(req, res) => {
-  res.status(404).json({
-    message: "Page does not exist"
-  });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-app.listen(5000, ()=>{
+
+
+app.listen(process.env.Port || 5000, ()=>{
     console.log('Server is running on port 5000');
 });
+
+

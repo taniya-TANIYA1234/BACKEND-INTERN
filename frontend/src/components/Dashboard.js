@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useCallback } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ function Dashboard() {
 
   const token = localStorage.getItem("token");
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       const url = userId
         ? `http://localhost:5000/api/tasks?userId=${userId}`
@@ -25,11 +25,11 @@ function Dashboard() {
     } catch (err) {
       console.log("FETCH ERROR:", err.response?.data || err.message);
     }
-  };
+  }, [token, userId]);
 
   useEffect(() => {
     fetchTasks();
-  }, [userId]);
+  }, [fetchTasks]);
 
   const addTask = async () => {
     if (!title) return;
@@ -90,7 +90,7 @@ function Dashboard() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h2>Dashboard</h2>
 
       <button onClick={logout} style={{ marginBottom: "20px" }}>
