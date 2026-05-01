@@ -37,7 +37,7 @@ async function main() {
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("*", (req, res) => {
+app.use( (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 

@@ -1,0 +1,20 @@
+{
+  "name": "backend-intern",
+  "version": "1.0.0",
+  "description": "This is a backend project built using **Node.js, Express.js, and MongoDB**.  \r     It includes authentication (JWT + bcrypt), role-based access (Admin/User), and CRUD operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taniya-TANIYA1234/BACKEND-INTERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taniya-TANIYA1234/BACKEND-INTERN/issues"
+  },
+  "homepage": "https://github.com/taniya-TANIYA1234/BACKEND-INTERN#readme"
+}
